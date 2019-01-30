@@ -22,7 +22,8 @@ export function characterReducer(state=initialState, action) {
         return Object.assign({}, state, {
             ...state,
             characters: action.characters,
-            loading: false
+            loading: false,
+            error: null
         })
     }
     else if (action.type === SEARCH_CHARACTERS_ERROR) {

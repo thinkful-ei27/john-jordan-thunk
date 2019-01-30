@@ -22,16 +22,13 @@ export const searchCharactersError = error => ({
 
 export const searchCharacters = name => dispatch => {
   dispatch(searchCharactersRequest());
-  search(name).then(res => {
-    if (!res.ok) {
-      return Promise.reject(res.statusText);
-    }
-    return res.json();
-  })
+  search(name)
     .then(characters => {
+      console.log(`Characters is ${characters}`)
       dispatch(searchCharactersSuccess(characters))
     })
     .catch(err => {
+      console.log(`We are failing in actions`)
       dispatch(searchCharactersError(err))
     });
 };
